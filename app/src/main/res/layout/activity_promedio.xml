@@ -34,21 +34,24 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre" />
             <EditText
+                android:id="@+id/nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text" />
+                android:ems="8"
+                android:inputType="text"
+                android:layout_gravity="center_horizontal"
+                />
         </FrameLayout>
 
 
-        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:rowCount="3"
             android:layout_marginTop="20dp"
-            android:padding="16dp">
-
-
+            android:padding="16dp"
+            android:layout_gravity="center_horizontal">
 
             <EditText
                 android:id="@+id/nota1"
@@ -56,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:ems="7"
                 android:hint="Ingresa Nota1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:layout_gravity="center_horizontal"/>
 
             <EditText
                 android:id="@+id/nota2"
@@ -64,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:ems="7"
                 android:hint="Ingresa Nota2"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:layout_gravity="center_horizontal"/>
 
             <EditText
                 android:id="@+id/nota3"
@@ -72,7 +77,8 @@
                 android:layout_height="wrap_content"
                 android:ems="7"
                 android:hint="Ingresa Nota3"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:layout_gravity="center_horizontal"/>
 
             <EditText
                 android:id="@+id/nota4"
@@ -80,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:ems="7"
                 android:hint="Ingresa Nota4"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:layout_gravity="center_horizontal"/>
 
             <EditText
                 android:id="@+id/nota5"
@@ -88,9 +95,68 @@
                 android:layout_height="wrap_content"
                 android:ems="7"
                 android:hint="Ingresa Nota5"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:layout_gravity="center_horizontal"/>
+
+            <Button
+                android:id="@+id/btnCalcular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:insetLeft="2dp"
+                android:insetRight="2dp"
+                android:text="Calcular Promedio"
+                android:layout_gravity="center_horizontal"/>
 
         </GridLayout>
+        <TextView
+            android:id="@+id/resultadotitulo"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Resultado final"
+            android:visibility="invisible"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"/>
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_marginTop="25dp"
+            android:padding="16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="8dp">
+
+            <TextView
+                android:id="@+id/resultadonumero"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:visibility="invisible"
+                android:layout_marginTop="8dp"
+                android:textSize="22sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/resultado"
+                android:layout_width="109dp"
+                android:layout_height="85dp"
+                android:visibility="invisible"
+                android:textSize="22sp">
+
+            </TextView>
+
+            <Button
+                android:id="@+id/btnlimpiar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:insetLeft="2dp"
+                android:insetRight="2dp"
+                android:text="Borrar" />
+        </GridLayout>
+
 
     </LinearLayout>
 
