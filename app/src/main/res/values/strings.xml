@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Desafio Practico 1</string>
-    <string name = "nombre_hint">Introduzca su nombre: </string>
+    <string name = "nombre_hint">Introduzca su nombre </string>
     <string name = "input1_hint">Nota 1, por favor</string>
     <string name = "input2_hint">Nota 2, por favor</string>
     <string name = "input3_hint">Nota 3, por favor</string>
     <string name = "input4_hint">Nota 4, por favor</string>
     <string name = "input5_hint">Nota 5, por favor</string>
+    <string name = "salario_hint">Ingrese su salario por favor</string>
+    <string name = "resultado_descuento">Resultado de descuentos: </string>
+    <string name = "texto_espera">Aún no has ingresado tu salario.</string>
 </resources>

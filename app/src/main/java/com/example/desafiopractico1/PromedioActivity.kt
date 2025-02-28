@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,7 @@ class PromedioActivity : AppCompatActivity() {
         val resultadonumero = findViewById<TextView>(R.id.resultadonumero)
         val resultadotitulo = findViewById<TextView>(R.id.resultadotitulo)
         val btnlimpiar = findViewById<Button>(R.id.btnlimpiar)
+        val layoutResultado = findViewById<LinearLayout>(R.id.linearLayoutResPromedio)
 
 
         //boton calcular
@@ -59,11 +61,14 @@ class PromedioActivity : AppCompatActivity() {
 
            else {
 
-                resultadotitulo.visibility = TextView.VISIBLE
-                resultado.visibility = TextView.VISIBLE
-                resultadonumero.visibility = TextView.VISIBLE
-                val promedio = (nota1.text.toString().toDouble() * 1.5 + nota2.text.toString().toDouble() * 1.5 + nota3.text.toString().toDouble() * 2.0 + nota4.text.toString().toDouble() * 2.5 + nota5.text.toString().toDouble() * 2.5) /5
-                resultadonumero.setText(promedio.toString())
+               layoutResultado.visibility = LinearLayout.VISIBLE
+               var promedio = (nota1.text.toString().toDouble() * 0.15 +
+                       nota2.text.toString().toDouble() * 0.15 +
+                       nota3.text.toString().toDouble() * 0.20 +
+                       nota4.text.toString().toDouble() * 0.25 +
+                       nota5.text.toString().toDouble() * 0.25)
+                val promedioString = formatToTwoDecimals(promedio)
+                resultadonumero.setText(promedioString)
                 if (promedio >= 6) {
                     resultado.setText("Aprobado")
                 } else {
@@ -79,15 +84,13 @@ class PromedioActivity : AppCompatActivity() {
             nota3.text.clear()
             nota4.text.clear()
             nota5.text.clear()
-            resultadotitulo.visibility = TextView.INVISIBLE
-            resultado.visibility = TextView.INVISIBLE
-            resultadonumero.visibility = TextView.INVISIBLE
+            layoutResultado.visibility = LinearLayout.GONE
         }
 
+    }
 
 
-
-
-
+    private fun formatToTwoDecimals(number: Double): String {
+        return String.format("%.2f", number)
     }
 }

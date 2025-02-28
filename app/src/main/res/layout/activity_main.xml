@@ -14,44 +14,63 @@
         tools:context=".MainActivity"
         android:gravity="center_horizontal">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#FF0B1B"
-            app:layout_constraintTop_toTopOf="parent">
 
-        </FrameLayout>
+
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="229dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Inicio"
+            android:layout_marginTop="30dp"
+            android:text="Inicio - Desafio 1 DSM"
             android:textAlignment="center"
             android:textSize="30sp" />
 
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/logo_udb" />
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Visite nuestras aplicaciones:"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btnPromedio"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Ir a Promedio" />
-
-        <Button
-            android:id="@+id/btnCalculadora"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ir a Calculadora"
-            android:layout_marginTop="20dp"/>
-
+            android:text="Ir a Promedio"
+            android:layout_marginTop="20dp"
+            app:backgroundTint="@color/primaryDarkColor"
+            app:cornerRadius="10dp" />
         <Button
             android:id="@+id/btnDescuentos"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Ir a Descuentos"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            app:backgroundTint="@color/primaryDarkColor"
+            app:cornerRadius="10dp"/>
+        <Button
+            android:id="@+id/btnCalculadora"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Ir a Calculadora"
+            android:layout_marginTop="20dp"
+            app:backgroundTint="@color/primaryDarkColor"
+            app:cornerRadius="10dp"/>
+
+
 
 
     </LinearLayout>
