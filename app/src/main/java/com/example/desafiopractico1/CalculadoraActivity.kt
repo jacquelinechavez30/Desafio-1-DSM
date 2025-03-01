@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.math.pow
 
 
 class CalculadoraActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class CalculadoraActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+            insets // This line is required for insets handling
         }
         //pantalla(display)
         display = findViewById<TextView>(R.id.display)
@@ -43,13 +44,15 @@ class CalculadoraActivity : AppCompatActivity() {
         val num7 = findViewById<Button>(R.id.num7)
         val num8 = findViewById<Button>(R.id.num8)
         val num9 = findViewById<Button>(R.id.num9)
-        //varaibles para las operaciones
+
+        //variables para las operaciones
         val btnresta = findViewById<Button>(R.id.btnresta)
         val btnsuma = findViewById<Button>(R.id.btnsuma)
         val btnmultiplicacion = findViewById<Button>(R.id.btnmultiplicacion)
         val btndivision = findViewById<Button>(R.id.btndivision)
         val btnigual = findViewById<Button>(R.id.btnigual)
         val btnraizcuadrada = findViewById<Button>(R.id.btnraizcuadrada)
+        val btnexponente = findViewById<Button>(R.id.btnexponente)
         val btnborrar = findViewById<Button>(R.id.btnborrar)
 
        //Asignacion de eventos a los botones para que tomen un valor
@@ -69,6 +72,7 @@ class CalculadoraActivity : AppCompatActivity() {
         btnmultiplicacion.setOnClickListener { elegirOperador("*") }
         btndivision.setOnClickListener { elegirOperador("/") }
         btnraizcuadrada.setOnClickListener { elegirOperador("√") }
+        btnexponente.setOnClickListener { elegirOperador("^") }
         //Asignacion de eventos a los botones para que realicen la operacion calcular y la funcion borrar
         btnigual.setOnClickListener { calcular() }
         btnborrar.setOnClickListener { borrar() }
@@ -80,15 +84,15 @@ class CalculadoraActivity : AppCompatActivity() {
     }
     // ingreso de numeros
     private fun tomarElvalor(s: String) {
-        numeroActual += s
-        actualizarDisplay()
+        numeroActual += s // Takes the value and concatenate with the other existing ones.
+        actualizarDisplay() // Updates the value and shows it in the display
     }
 
     //boton de borrar
     private fun borrar() {
-        numeroActual = ""
-        numeroAnterior = ""
-        operador = null
+        this.numeroActual = ""
+        this.numeroAnterior = ""
+        this.operador = null
         actualizarDisplay()
     }
 
@@ -96,9 +100,9 @@ class CalculadoraActivity : AppCompatActivity() {
     fun elegirOperador(operator: String) {
         //Validar que se haya ingresado un numero  para poder escoger un operador
         if (numeroActual.isNotEmpty()) {
-                numeroAnterior = numeroActual
-                numeroActual = ""
-                operador = operator
+                this.numeroAnterior = this.numeroActual
+                this.numeroActual = ""
+                this.operador = operator
 
         } else {
             display.text = "Error debes ingresar un numero por favor"
@@ -108,12 +112,13 @@ class CalculadoraActivity : AppCompatActivity() {
 
   //boton igual
     private fun calcular() {
-        if (numeroAnterior.isNotEmpty() &&  numeroActual.isNotEmpty() && operador != null) {
-            val numero1 = numeroAnterior.toDouble()
-            val numero2 = numeroActual.toDouble()
+        if (this.numeroAnterior.isNotEmpty() &&  this.numeroActual.isNotEmpty() && this.operador != null) {
+            val numero1 = this.numeroAnterior.toDouble()
+            val numero2 = this.numeroActual.toDouble()
             var error: String? = null
-            display.text
+            this.display.text // this will show the result of the operation
             //segun el operador se realizara la operacion
+
             //when funciona como un switch
             val result = when (operador) {
                 "+" -> numero1 + numero2
@@ -124,6 +129,14 @@ class CalculadoraActivity : AppCompatActivity() {
                     error= "Operacion indeterminada"
 
                 }
+                "*" -> numero1 * numero2
+                "√" -> /*validacion*/ if (numero2 >= 0 && numero1 >0) {
+                    numero2.pow(1/numero1) // The second number will be the radicanding not the radical
+                } else {
+                    error= "Operacion indeterminada"
+                }
+                "^" -> numero1.pow(numero2)
+
                 else -> error= "Elige una operacion valida"
             }
             if (error != null) {
